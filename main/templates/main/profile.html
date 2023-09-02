@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <div>
+        {{ user.first_name }} <br>
+        {{ user.last_name }} <br>
+        {% if grade != 0 %}
+            {{ grade }} <br>
+            {{ total_points }} <br>
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {% for record in records %}
+            {{ record.student.username}} {{ record.teacher.username }} {{ record.merit.code }} {{ record.merit.description }} {{ record.merit.points }} {{ record.comment }}
+        {% endfor %}
+    </div>
+    <br>
+    
+    <div>
+        {% if grade == 0 %}
+            {% for class in classes %}
+                <a href="/grade/{{class}}">{{ class }}</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

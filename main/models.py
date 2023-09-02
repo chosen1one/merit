@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 
 
 class UserExtention(models.Model):
-    grade = models.IntegerField(default=None, blank=True, null=True)
+    grade = models.IntegerField(default=None, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userextention")
 
     def __str__(self):
         return self.user.username
     
     def usertype(self):
-        if self.grade == None:
+        if self.grade == 0:
             return "Teacher"
         return self.grade
 

@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+
+{% block title %}MeritForm{% endblock %}
+
+{% block content %}
+    <form action="/grade/post/" method="post">
+        {% csrf_token %}
+
+        <label for="student-names">Student:</label> 
+        <select name="student-names"> 
+            {% for student in students %}
+                <option value="{{student.user.id}}">{{student.user.first_name}}</option> 
+            {% endfor %}
+        </select>
+        <br>
+        
+        <label for="merit-names">Merit/Demerit:</label> 
+        <select name="merit-names"> 
+            {% for merit in merits %}
+                <option value="{{merit.id}}">{{merit.code}} {{merit.description}}</option> 
+            {% endfor %}
+        </select>
+        <br>
+
+        <label>Comment</label>
+        <input type="text" name="comment">
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
