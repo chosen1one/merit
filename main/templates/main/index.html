@@ -1,0 +1,102 @@
+{% extends "main/base.html" %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+<style>
+    .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        position: relative;
+    }
+
+    h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    li {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .merit {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+    }
+
+    .demerit {
+        background-color: #F44336;
+        color: white;
+        padding: 10px;
+    }
+
+    .top-10 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #f2a538;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="content">
+    <div class="top-10">
+        <a href="/top_students/">Top Students</a>
+
+    </div>
+    
+    <div class="section">
+        <h2>What is Merits and Demerits system?</h2>
+        <ul>
+            <li>The system is an objective way to monitor and track learner behavior.</li>
+            <li>Schools use the merit and demerit record within a point-based system to punish misbehavior or reward good performance.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Why we use this system?</h2>
+        <ul>
+            <li>Aim to establish discipline and a purposeful school environment dedicated to the accomplishment of the vision and mission of the school.</li>
+            <li>Learners will be accountable for their actions which will attract both positive and negative consequences.</li>
+            <li>Ability to act responsibly, independently of adult supervision is considered the ultimate achievement.</li>
+        </ul>
+    </div>
+
+    <div class="section merit">
+        <h1>MERIT LEVELS</h1>
+        <ul>
+            <li>Merit Level 4 (300 points and above) Presenting a “Certificate of Platinum Student”</li>
+            <li>Merit Level 3 (250 – 299 points and above) Presenting a “Certificate of Golden Student”</li>
+            <li>Merit Level 2 (200 – 249 points and above) Presenting a “Certificate of Silver Student”</li>
+            <li>Merit Level 1 (150 – 199 points and above) Presenting a “Certificate of Bronze Student”</li>
+            <li>Standard Level (61 – 149 points) Encouraging to be a well-behaved and successful member of society</li>
+        </ul>
+    </div>
+
+    <div class="section demerit">
+        <h1>DEMERIT LEVELS</h1>
+        <ul>
+            <li>Demerit Level 1 (51 – 60 points) Talking to the Pastoral Care Head § Oral warning from Pastoral Care Head (3 times)</li>
+            <li>Demerit Level 2 (41 – 50 points) Corrective teaching/counseling § Warning in written form</li>
+            <li>Demerit Level 3 (31 – 40 points) Suspension from any kind of Olympiad and project competitions.§ Informing parents § Warning in written form</li>
+            <li>Demerit Level 4 (21 – 30 points) Letter of notification signed by parents to ensure that parents are informed about all the actions school may take after this point § Warning in written form</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -8,12 +8,12 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F5F5F5; /* Soft gray */
+            background-color: #F5F5F5;
             color: #333;
         }
  
         header {
-            background-color: #3498DB; /* Soft blue */
+            background-color: #3498DB;
             color: #FFF;
             display: flex;
             justify-content: space-between;
@@ -38,29 +38,33 @@
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #3498DB; /* Soft blue */
+            background-color: #3498DB;
             color: #FFF;
         }
  
         a {
             text-decoration: none;
-            color: #9B59B6; /* Soft purple */
+            color: #FFF;
             font-weight: bold;
         }
  
         a:hover {
             text-decoration: underline;
         }
- 
-        /* Add additional CSS here */
- 
     </style>
 </head>
  
 <body>
     <header>
-        <h1 style="margin: 0 auto;">Merits/Demerits System</h1>
-        <a href="/logout/" id="logout-link" style="color: #9B59B6; margin-left: 10px;">Log Out</a> <!-- Change color to soft purple -->
+        <h1 style="margin: 0 auto;">
+            <a href="/">Merits/Demerits System</a>
+        </h1>
+        {% if user.is_authenticated %}
+            <a href="/profile/" id="logout-link" style="color: #FFF; margin-left: 10px;">{{ user.username }}</a> 
+            <a href="/logout/" id="logout-link" style="color: #FFF; margin-left: 10px;">Log Out</a> 
+        {% else %}
+            <a href="/login/" style="color: #FFF;">Log In</a>
+        {% endif %}
     </header>
  
     <main>
