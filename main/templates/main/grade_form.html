@@ -1,31 +1,89 @@
 {% extends "main/base.html" %}
-
+ 
 {% block title %}MeritForm{% endblock %}
-
+ 
 {% block content %}
-    <form action="/grade/post/" method="post">
-        {% csrf_token %}
-
-        <label for="student-names">Student:</label> 
-        <select name="student-names"> 
-            {% for student in students %}
-                <option value="{{student.user.id}}">{{student.user.first_name}}</option> 
-            {% endfor %}
-        </select>
-        <br>
-        
-        <label for="merit-names">Merit/Demerit:</label> 
-        <select name="merit-names"> 
-            {% for merit in merits %}
-                <option value="{{merit.id}}">{{merit.code}} {{merit.description}}</option> 
-            {% endfor %}
-        </select>
-        <br>
-
-        <label>Comment</label>
-        <input type="text" name="comment">
-        <br>
-
-        <input type="submit" value="Submit">
-    </form>
+    <div class="form-container">
+        <h2>Merit/Demerit Form</h2>
+        <form action="/grade/post/" method="post">
+            {% csrf_token %}
+ 
+            <div class="form-group">
+                <label for="student-names">Student:</label>
+                <select name="student-names" id="student-names">
+                    {% for student in students %}
+                        <option value="{{ student.user.id }}">{{ student.user.first_name }} {{ student.user.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+ 
+            <div class="form-group">
+                <label for="merit-names">Merit/Demerit:</label>
+                <select name="merit-names" id="merit-names">
+                    {% for merit in merits %}
+                        <option value="{{ merit.id }}">{{ merit.code }} {{ merit.description }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+ 
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <input type="text" name="comment" id="comment">
+            </div>
+ 
+            <div class="form-group">
+                <input type="submit" value="Submit" class="submit-button">
+            </div>
+        </form>
+    </div>
+ 
+    <style>
+        /* Add your CSS styles here */
+        .form-container {
+            background-color: #FFF;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+ 
+        h2 {
+            color: #3498DB; /* Soft blue */
+            text-align: center;
+        }
+ 
+        .form-group {
+            margin-bottom: 15px;
+        }
+ 
+        label {
+            display: block;
+            font-weight: bold;
+        }
+ 
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+        }
+ 
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498DB; /* Soft blue */
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+ 
+        .submit-button:hover {
+            background-color: #2980B9; /* Slightly darker blue on hover */
+        }
+    </style>
 {% endblock %}

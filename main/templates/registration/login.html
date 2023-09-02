@@ -1,12 +1,78 @@
 {% extends "main/base.html" %}
-
+ 
 {% block title %}Login{% endblock %}
-
+ 
 {% block content %}
-    <form action="/login/" method="post">
-        {% csrf_token %}
-
-        {{ form }}
-        <p><input type="submit" value="Login"</p>
-    </form>
+    <div class="login-form">
+        <h2>Login to Your Account</h2>
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                {{ form.password }}
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+ 
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5; /* Soft gray */
+            color: #333;
+        }
+ 
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+ 
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3498DB; /* Soft blue */
+        }
+ 
+        .form-group {
+            margin-bottom: 15px;
+        }
+ 
+        label {
+            display: block;
+            font-weight: bold;
+        }
+ 
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+        }
+ 
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498DB; /* Soft blue */
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+ 
+        button:hover {
+            background-color: #2980B9; /* Slightly darker blue on hover */
+        }
+    </style>
 {% endblock %}

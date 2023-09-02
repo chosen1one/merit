@@ -1,25 +1,77 @@
 <!DOCTYPE html>
 <html>
-
+ 
 <head>
     <title>{% block title %}Merits{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5; /* Soft gray */
+            color: #333;
+        }
+ 
+        header {
+            background-color: #3498DB; /* Soft blue */
+            color: #FFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+ 
+        h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #3498DB; /* Soft blue */
+            color: #FFF;
+        }
+ 
+        a {
+            text-decoration: none;
+            color: #9B59B6; /* Soft purple */
+            font-weight: bold;
+        }
+ 
+        a:hover {
+            text-decoration: underline;
+        }
+ 
+        /* Add additional CSS here */
+ 
+    </style>
 </head>
-
-
+ 
 <body>
     <header>
-        <h1>Merits/Demerits System</h1>
+        <h1 style="margin: 0 auto;">Merits/Demerits System</h1>
+        <a href="/logout/" id="logout-link" style="color: #9B59B6; margin-left: 10px;">Log Out</a> <!-- Change color to soft purple -->
     </header>
-
+ 
     <main>
-        {% block content %} {% endblock %}
-
-        <a href="/logout/">Log Out</a>
+        <div id="content" class="container">
+            {% block content %} {% endblock %}
+        </div>
     </main>
-
+ 
     <footer>
-        <p>2023</p>
+        <p>&copy; 2023</p>
     </footer>
 </body>
-
+ 
 </html>

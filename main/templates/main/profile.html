@@ -1,31 +1,101 @@
 {% extends "main/base.html" %}
-
+ 
 {% block title %}Profile{% endblock %}
-
+ 
 {% block content %}
-    <div>
-        {{ user.first_name }} <br>
-        {{ user.last_name }} <br>
+    <div class="profile-info">
+        <h2>User Information</h2>
+        <p><strong>First Name:</strong> {{ user.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
         {% if grade != 0 %}
-            {{ grade }} <br>
-            {{ total_points }} <br>
+            <p><strong>Grade:</strong> {{ grade }}</p>
+            <p><strong>Total Points:</strong> {{ total_points }}</p>
         {% endif %}
     </div>
-    <br>
-
-    <div>
-        {% for record in records %}
-            {{ record.student.username}} {{ record.teacher.username }} {{ record.merit.code }} {{ record.merit.description }} {{ record.merit.points }} {{ record.comment }}
-        {% endfor %}
+ 
+    <hr>
+ 
+    <div class="merit-records">
+        <h2>Merit Records</h2>
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Teacher</th>
+                    <th>Merit Code</th>
+                    <th>Merit Description</th>
+                    <th>Merit Points</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.student.username }}</td>
+                        <td>{{ record.teacher.username }}</td>
+                        <td>{{ record.merit.code }}</td>
+                        <td>{{ record.merit.description }}</td>
+                        <td>{{ record.merit.points }}</td>
+                        <td>{{ record.comment }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    <br>
-    
-    <div>
+ 
+    <hr>
+ 
+    <div class="grade-selection">
         {% if grade == 0 %}
-            {% for class in classes %}
-                <a href="/grade/{{class}}">{{ class }}</a>
-            {% endfor %}
+            <h2>Grade Selection</h2>
+            <ul class="class-list">
+                {% for class in classes %}
+                    <li><a href="/grade/{{ class }}">{{ class }} - grade </a></li>
+                {% endfor %}
+            </ul>
         {% endif %}
     </div>
-
+ 
+    <style>
+        /* Add your CSS styles here */
+        .profile-info,
+        .merit-records,
+        .grade-selection {
+            background-color: #FFF;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+        }
+ 
+        h2 {
+            color: #3498DB; /* Soft blue */
+        }
+ 
+        .records-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+ 
+        .records-table th,
+        .records-table td {
+            border: 1px solid #DDD;
+            padding: 8px;
+            text-align: left;
+        }
+ 
+        .records-table th {
+            background-color: #3498DB;
+            color: #FFF;
+        }
+ 
+        .class-list {
+            list-style-type: none;
+            padding: 0;
+        }
+ 
+        .class-list li {
+            margin-bottom: 10px;
+        }
+    </style>
 {% endblock %}
