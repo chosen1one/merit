@@ -53,6 +53,27 @@
         padding: 10px;
         font-weight: bold;
     }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        background-color: #3498DB;
+        color: white;
+        font-weight: bold;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 </style>
 
 <div class="content">
@@ -97,6 +118,28 @@
             <li>Demerit Level 3 (31 – 40 points) Suspension from any kind of Olympiad and project competitions.§ Informing parents § Warning in written form</li>
             <li>Demerit Level 4 (21 – 30 points) Letter of notification signed by parents to ensure that parents are informed about all the actions school may take after this point § Warning in written form</li>
         </ul>
+    </div>
+
+    <div class="section">
+        <h2>Merit/Demerit CodePoints</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for merit in merits %}
+                    <tr>
+                        <td>{{ merit.code }}</td>
+                        <td>{{ merit.description }}</td>
+                        <td>{{ merit.points }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}

@@ -7,7 +7,8 @@ from .models import UserExtention, User, Record, Merit
 
 
 def index(request):
-    return render(request, "main/index.html")
+    merits = Merit.objects.all()
+    return render(request, "main/index.html", {"merits": merits})
 
 
 @login_required(login_url="/login/")
@@ -29,6 +30,7 @@ def profile(request):
     return render(request, "main/profile.html", context)
 
 
+@permission_required("main.add_record", login_url="/profile/")
 @login_required(login_url="/login/")
 def grade_form(request, user_grade):
     students = UserExtention.objects.filter(grade=user_grade)
@@ -40,6 +42,7 @@ def grade_form(request, user_grade):
     return render(request, "main/grade_form.html", context)
 
 
+@permission_required("main.add_record", login_url="/profile/")
 @login_required(login_url="/login/")
 def grade_form_post(request):
     db_student = User.objects.get(id=int(request.POST["student-names"]))
