@@ -50,7 +50,7 @@
             <h2>Grade Selection</h2>
             <ul class="class-list">
                 {% for class in classes %}
-                    <li><a href="/grade/{{ class }}">{{ class }} - grade </a></li>
+                    <li><a class="grade-number" href="/grade/{{ class }}">{{ class }} - grade </a></li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -60,7 +60,7 @@
         .profile-info,
         .merit-records,
         .grade-selection {
-            background-color: #FFF;
+            background-color: #ffffff;
             padding: 20px;
             margin: 20px;
             border: 1px solid #DDD;
@@ -95,6 +95,10 @@
  
         .class-list li {
             margin-bottom: 10px;
+        }
+        
+        .grade-number{
+            color: #3498DB;
         }
     </style>
 {% endblock %}
